@@ -1,5 +1,13 @@
 <script setup>
 import FormInput from '@/components/FormInput.vue'
+import { useRouter } from 'vue-router';
+
+const router = useRouter()
+
+function createAccount() {
+    router.push({name: 'SignUp'})
+}
+
 </script>
 
 <template>
@@ -12,12 +20,12 @@ import FormInput from '@/components/FormInput.vue'
     <form class="justify-center w-full">
       <div class="mx-auto mb-3">
         <label for="email" class="flex justify-center mb-1">Email:</label>
-        <FormInput id="email" type="email" autocomplete="email" placeholder="dupond@gmail.com"></FormInput>
+        <FormInput id="email" type="email" autocomplete="email" placeholder="dupond@gmail.com" required></FormInput>
       </div>
 
       <div class="mx-auto mb-6">
         <label for="password" class="flex justify-center mb-1">Password:</label>
-        <FormInput id="password" type="password" autocomplete="password" placeholder="**********"></FormInput>
+        <FormInput id="password" type="password" autocomplete="password" placeholder="**********" required></FormInput>
       </div>
 
       <button
@@ -28,7 +36,7 @@ import FormInput from '@/components/FormInput.vue'
       </button>
     </form>
 
-    <p class="mb-40" @click="router.push({name: 'LogIn'})">Don't have an account ? Create an account</p>
+    <p class="mb-40" @click="createAccount">Don't have an account ? Create an account</p>
 
     <button
       class="flex justify-center w-64 p-3 mx-auto mb-2 text-2xl border-2 border-white rounded-md bg-slate-500 hover:bg-slate-300 hover:border-black hover:text-black"
