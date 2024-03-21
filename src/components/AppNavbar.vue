@@ -2,8 +2,8 @@
 import { ref } from 'vue';
 
 const drawer = ref(false);
-const isLoggedIn = ref(true);
-const isLoggedOut = ref(false);
+const isLoggedIn = ref(false);
+const isLoggedOut = ref(true);
 </script>
 
 <template>
