@@ -4,8 +4,7 @@ import AppNavbar from '@/components/AppNavbar.vue';
 
 <template>
     <AppNavbar />
-    <div id="app" class="margin-auto">
+    <div id="app" class="bg-gray-900 margin-auto">
         <router-view />
     </div>
 </template>
-
