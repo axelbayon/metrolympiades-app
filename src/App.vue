@@ -1,14 +1,10 @@
+<script setup>
+
+</script>
+
 <template>
-    <!-- Crée une div avec l'ID "app", qui occupe toute la hauteur de l'écran et a un fond bleu. -->
-    <div id="app" class="margin-auto">
-        <!-- Inclut la vue du routeur, qui affiche le composant correspondant à la route actuelle. -->
+    <div id="app" class="bg-gray-900 margin-auto">
         <router-view />
     </div>
 </template>
 
-<script>
-export default {
-    // Définit le nom du composant comme 'App'.
-    name: 'App',
-};
-</script>
