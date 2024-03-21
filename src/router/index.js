@@ -8,8 +8,19 @@ const router = createRouter({
       path: '/',
       name: 'Teams',
       component: Teams,
+    },
+    {
+      path:'/ranked',
+      name:'Ranked',
+      component : () => import ('@/views/RankedView.vue')
     }
+
   ]
 })
+
+
+
+
+
 
 export default router
