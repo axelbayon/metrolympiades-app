@@ -1,29 +1,44 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import LogIn from '../views/LogInView.vue'
 import SignUp from '../views/SignUpView.vue'
-
+import Adel from '../views/A_DEL.vue'
+import { supabase } from '@/supabase'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
+      path :'/',
+      name: 'ADEL',
+      component: Adel,
+      meta: {
+        requiresAuth: true
+      }
+    },
+    {
       path: '/login',
       name: 'LogIn',
       component: LogIn,
-      meta: {
-        requiresAuth: false
-      }
     },
     {
       path: '/signup',
       name: 'SignUp',
       component: SignUp,
-      meta: {
-        requiresAuth: false
-      }
     }
   ]
 })
 
+router.beforeEach(async (to, from, next) => {
+	const {data} = await supabase.auth.getSession()
+	const isLogged = !!data.session //Si session est null, isLogged == false, sinon est true
+	const requiresAuth = to.matched.some((value) => value.meta.requiresAuth)
+	if (requiresAuth && !isLogged) {
+		next('/login')
+	} else if (!requiresAuth && isLogged) {
+		next('/')
+	} else {
+    next()
+	}
+});
 
 export default router

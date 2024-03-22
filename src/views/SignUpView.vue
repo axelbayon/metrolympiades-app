@@ -27,6 +27,7 @@ async function signup() {
     router.push({name: 'TeamSettings'})
   }
 }
+
 </script>
 
 <template>
