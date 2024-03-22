@@ -1,7 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import LogIn from '../views/LogInView.vue'
 import SignUp from '../views/SignUpView.vue'
-import Adel from '../views/A_DEL.vue'
+import TeamSettings from '../views/TeamSettings.vue'
 import { supabase } from '@/supabase'
 
 const router = createRouter({
@@ -9,8 +9,8 @@ const router = createRouter({
   routes: [
     {
       path :'/',
-      name: 'ADEL',
-      component: Adel,
+      name: 'teamSettings',
+      component: TeamSettings,
       meta: {
         requiresAuth: true
       }
