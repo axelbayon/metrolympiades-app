@@ -29,7 +29,7 @@ const logout = async () => {
         <div v-show="drawer" class="absolute w-full overflow-auto bg-gray-700 top-full">
             <ul class="flex flex-col items-center w-full text-center text-white">
                 <li class="block w-full p-4 hover:bg-gray-800">
-                    <router-link to="/ranking">Ranking</router-link>
+                    <router-link to="/rankings">Rankings</router-link>
                 </li>
                 
                 <li class="block w-full p-4 hover:bg-gray-800" v-if="user">
@@ -37,7 +37,7 @@ const logout = async () => {
                 </li>
                 
                 <li class="block w-full p-4 hover:bg-gray-800" v-if="user">
-                    <router-link to="/match-settings">Match Setting</router-link>
+                    <router-link to="/">Team Settings</router-link>
                 </li>
                 
                 <li class="block w-full p-4 hover:bg-gray-800" v-if="!user">

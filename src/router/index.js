@@ -35,6 +35,7 @@ const router = createRouter({
 })
 
 router.beforeEach(async (to, from, next) => {
+  
 	const {data} = await supabase.auth.getSession()
 	const isLogged = !!data.session //Si session est null, isLogged == false, sinon est true
 	const requiresAuth = to.matched.some((value) => value.meta.requiresAuth)
@@ -42,7 +43,8 @@ router.beforeEach(async (to, from, next) => {
 		next('/login')
 	} else if (!requiresAuth && isLogged) {
 		next('/')
-	} else {
+  }
+  else {
     next()
 	}
 });
