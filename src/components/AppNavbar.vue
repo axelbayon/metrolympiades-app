@@ -7,7 +7,7 @@ const isLoggedOut = ref(true);
 </script>
 
 <template>
-    <div class="flex flex-col h-screen bg-gray-100">
+    <div class="relative flex flex-col bg-gray-100">
         <div class="flex items-center justify-between p-4 text-white bg-gray-800">
             <h1 class="text-lg">Menu</h1>
             <button @click="drawer = !drawer" class="text-lg">
@@ -17,18 +17,18 @@ const isLoggedOut = ref(true);
             </button>
         </div>
 
-        <div v-show="drawer" class="w-full h-full overflow-auto bg-gray-700">
+        <div v-show="drawer" class="absolute w-full overflow-auto bg-gray-700 top-full">
             <ul class="flex flex-col items-center w-full text-center text-white">
                 <li class="block w-full p-4 hover:bg-gray-800">
                     <router-link to="/ranking">Ranking</router-link>
                 </li>
                 
                 <li class="block w-full p-4 hover:bg-gray-800" v-if="isLoggedIn">
-                    <router-link to="/match">Match</router-link>
+                    <router-link to="/matchs">Matchs</router-link>
                 </li>
                 
                 <li class="block w-full p-4 hover:bg-gray-800" v-if="isLoggedIn">
-                    <router-link to="/match-setting">Match Setting</router-link>
+                    <router-link to="/match-settings">Match Setting</router-link>
                 </li>
                 
                 <li class="block w-full p-4 hover:bg-gray-800" v-if="isLoggedOut">
