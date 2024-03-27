@@ -4,6 +4,8 @@ import SignUp from '../views/SignUpView.vue'
 import TeamSettings from '../views/TeamSettingsView.vue'
 import Rankings from '../views/RankingsView.vue'
 import { supabase } from '@/supabase'
+import Matchs from '@/views/MatchsView.vue'
+import CreateMatch from '@/views/CreateMatchView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -30,6 +32,19 @@ const router = createRouter({
       path: '/rankings',
       name: 'Rankings',
       component: Rankings,
+    },
+    {
+      path: '/matchs',
+      name: 'Matchs',
+      component: Matchs,
+    },
+    {
+      path: '/createMatch',
+      name: 'CreateMatch',
+      component: CreateMatch,
+      meta: {
+        requiresAuth: true
+    }
     }
   ]
 })
