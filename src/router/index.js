@@ -1,7 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import LogIn from '../views/LogInView.vue'
 import SignUp from '../views/SignUpView.vue'
-import TeamSettings from '../views/TeamSettings.vue'
+import TeamSettings from '../views/TeamSettingsView.vue'
 import { supabase } from '@/supabase'
 
 const router = createRouter({
