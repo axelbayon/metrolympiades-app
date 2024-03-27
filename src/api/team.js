@@ -8,23 +8,14 @@ export const fetchMembers = async () => {
 
     if (error){
         console.error('Error fetching members', error)
-    } else {
-        members.value = data.members
+    } else { 
+        members.value = data.members ?? []
     }
 }
 
-// export const insertmembers = (newMembers) => {
-//     const {error, data} = supabase.from('teams').update('members': newMembers).eq('leader', 'af15a5b4-3d82-4967-bb2c-e01fffc69aab').select().single()
-//     if (error){
-//         console.error('Error inserting members', error)
-//     } else {
-//         members.value = data.members
-//     }
-// }
-
-// export const updateMembers = (newMembers) => {
-//     const {error, data} = supabase.from('teams').update('members': newMembers).eq('leader', 'af15a5b4-3d82-4967-bb2c-e01fffc69aab')
-//     if (error){
-//         console.error('Error updating members', error)
-//     }
-// }
+export const updateMembers = async (newMembers) => {
+    const {error} = await supabase.from('teams').update({members: newMembers}).eq('leader', 'af15a5b4-3d82-4967-bb2c-e01fffc69aab')
+    if (error){
+        console.error('Error updating members', error)
+    }
+}
