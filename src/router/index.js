@@ -9,7 +9,7 @@ const router = createRouter({
   routes: [
     {
       path :'/',
-      name: 'teamSettings',
+      name: 'TeamSettings',
       component: TeamSettings,
       meta: {
         requiresAuth: true
