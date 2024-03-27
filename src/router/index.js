@@ -56,9 +56,7 @@ router.beforeEach(async (to, from, next) => {
 	const requiresAuth = to.matched.some((value) => value.meta.requiresAuth)
 	if (requiresAuth && !isLogged) {
 		next('/login')
-	} else if (!requiresAuth && isLogged) {
-		next('/')
-  }
+	}
   else {
     next()
 	}
