@@ -1,5 +1,15 @@
 <script setup>
 import AppNavbar from '@/components/AppNavbar.vue';
+import { onMounted } from 'vue';
+import { supabase } from '@/supabase';
+import { useUserStore } from '@/stores/user';
+
+onMounted(async() => {
+  supabase.auth.onAuthStateChange((event, session) => {
+    useUserStore().user = session?.user;
+  });
+});
+
 </script>
 
 <template>

@@ -1,9 +1,10 @@
 <script setup>
 import { ref } from 'vue';
+import { useUserStore } from '@/stores/user';
+import { storeToRefs } from 'pinia';
 
 const drawer = ref(false);
-const isLoggedIn = ref(false);
-const isLoggedOut = ref(true);
+const { user } = storeToRefs(useUserStore());
 </script>
 
 <template>
@@ -23,23 +24,23 @@ const isLoggedOut = ref(true);
                     <router-link to="/ranking">Ranking</router-link>
                 </li>
                 
-                <li class="block w-full p-4 hover:bg-gray-800" v-if="isLoggedIn">
+                <li class="block w-full p-4 hover:bg-gray-800" v-if="user">
                     <router-link to="/matchs">Matchs</router-link>
                 </li>
                 
-                <li class="block w-full p-4 hover:bg-gray-800" v-if="isLoggedIn">
+                <li class="block w-full p-4 hover:bg-gray-800" v-if="user">
                     <router-link to="/match-settings">Match Setting</router-link>
                 </li>
                 
-                <li class="block w-full p-4 hover:bg-gray-800" v-if="isLoggedOut">
+                <li class="block w-full p-4 hover:bg-gray-800" v-if="!user">
                     <router-link to="/login">Login</router-link>
                 </li>
                 
-                <li class="block w-full p-4 hover:bg-gray-800" v-if="isLoggedOut">
+                <li class="block w-full p-4 hover:bg-gray-800" v-if="!user">
                     <router-link to="/signup">Sign Up</router-link>
                 </li>
                 
-                <li class="block w-full p-4 hover:bg-gray-800" v-if="isLoggedIn">
+                <li class="block w-full p-4 hover:bg-gray-800" v-if="user">
                     <router-link to="/logout">Logout</router-link>
                 </li>
             </ul>

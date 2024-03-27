@@ -14,7 +14,6 @@ function createAccount() {
     router.push({name: 'SignUp'})
 }
 
-
 async function login() {
     const {error} = await supabase.auth.signInWithPassword({
         email: email.value,
