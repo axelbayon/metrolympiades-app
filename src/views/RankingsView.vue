@@ -2,14 +2,14 @@
 
 import {getTeam,getResult} from '@/api/apiRankings'
 import {onMounted, ref} from 'vue'
-import RankingsEquipes from '@/components/RankingsEquipes.vue'
+import RankingsTeams from '@/components/RankingsTeams.vue'
 
 
 
-const equipes=ref([
+const teams=ref([
     
 ])
-const tableauEquipes=ref([
+const tableTeams=ref([
     
 ])
 const matchs=ref([])
@@ -17,35 +17,35 @@ const matchs=ref([])
 
 
 onMounted(async() => {
-    equipes.value=await getTeam()
+    teams.value=await getTeam()
     matchs.value =await getResult()
-    tableauEquipes.value = equipes.value.map((equipe) => {
-        const points = calcualtePoints(equipe.id, matchs)
-        return {...equipe , point : points} 
+    tableTeams.value = teams.value.map((team) => {
+        const points = calcualtePoints(team.id, matchs)
+        return {...team , point : points} 
 
     })
 
-    function calcualtePoints(equipe, matchs){
-        var pointsDeEquipe = 0
+    function calcualtePoints(team, matchs){
+        var pointsTeam = 0
         matchs.value.forEach(element => {
 
-            if((element.team1 == equipe || element.team2 == equipe ) && (element.team1_score == element.team2_score)){
-                pointsDeEquipe = pointsDeEquipe + 1
+            if((element.team1 == team || element.team2 == team ) && (element.team1_score == element.team2_score)){
+                pointsTeam = pointsTeam + 1
             }
-            if((element.team1 == equipe) && (element.team1_score > element.team2_score)){
-                pointsDeEquipe = pointsDeEquipe + 3
+            if((element.team1 == team) && (element.team1_score > element.team2_score)){
+                pointsTeam = pointsTeam + 3
 
             }
-            if((element.team2 == equipe) && (element.team1_score < element.team2_score)){
-                pointsDeEquipe = pointsDeEquipe + 3
+            if((element.team2 == team) && (element.team1_score < element.team2_score)){
+                pointsTeam = pointsTeam + 3
 
             }
 
         })
-        return pointsDeEquipe
+        return pointsTeam
 }
 
-tableauEquipes.value.sort((a, b) => (a.point < b.point ? 1 : -1))
+tableTeams.value.sort((a, b) => (a.point < b.point ? 1 : -1))
 
 }) 
 
@@ -54,8 +54,8 @@ tableauEquipes.value.sort((a, b) => (a.point < b.point ? 1 : -1))
 
 <template>
     <div>BABAR</div>
-    <div v-for="(equipe) in tableauEquipes" :key="equipe.id">
-        <RankingsEquipes :equipe="equipe"/>
+    <div v-for="(team) in tableTeams" :key="team.id">
+        <RankingsTeams :team="team"/>
     </div>  
 
 

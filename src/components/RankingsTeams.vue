@@ -1,7 +1,7 @@
 <script setup>
 
 defineProps({
-    equipe : {
+    team : {
         type : Object,
         required : true
     }
@@ -14,8 +14,8 @@ defineProps({
 <template>
 
     <div>
-        {{ equipe.name }}
-        {{ equipe.point }}
+        {{ team.name }}
+        {{ team.point }}
     </div>
 
 </template>
