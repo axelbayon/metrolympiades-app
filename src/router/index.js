@@ -10,9 +10,9 @@ const router = createRouter({
       component: Teams,
     },
     {
-      path:'/ranked',
-      name:'Ranked',
-      component : () => import ('@/views/RankedView.vue')
+      path:'/rankings',
+      name:'Rankings',
+      component : () => import ('@/views/RankingsView.vue')
     }
 
   ]
