@@ -23,7 +23,7 @@ async function login() {
     if (error) {
         alert(error)  
     } else {
-        router.push('/teamSettings');
+        router.push({name: 'TeamSettings'});
     }
 }
 
@@ -59,7 +59,8 @@ async function login() {
 
     <button
       class="flex justify-center w-64 p-3 mx-auto mb-2 text-2xl border-2 border-white rounded-md bg-slate-500 hover:bg-slate-300 hover:border-black hover:text-black"
-    >
+      @click="router.push({name: 'Rankings'})"
+      >
       Guest Access
     </button>
   </div>

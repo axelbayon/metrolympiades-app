@@ -1,7 +1,8 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import LogIn from '../views/LogInView.vue'
 import SignUp from '../views/SignUpView.vue'
-import TeamSettings from '../views/TeamSettings.vue'
+import TeamSettings from '../views/TeamSettingsView.vue'
+import Rankings from '../views/RankingsView.vue'
 import { supabase } from '@/supabase'
 
 const router = createRouter({
@@ -9,7 +10,7 @@ const router = createRouter({
   routes: [
     {
       path :'/',
-      name: 'teamSettings',
+      name: 'TeamSettings',
       component: TeamSettings,
       meta: {
         requiresAuth: true
@@ -24,6 +25,11 @@ const router = createRouter({
       path: '/signup',
       name: 'SignUp',
       component: SignUp,
+    },
+    {
+      path: '/rankings',
+      name: 'Rankings',
+      component: Rankings,
     }
   ]
 })
