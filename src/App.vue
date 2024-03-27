@@ -12,7 +12,7 @@ onMounted(async() => {
 
 </script>
 
-<template>
+<template class="bg-gray-900">
     <AppNavbar />
     <div id="app" class="bg-gray-900 margin-auto">
         <router-view />

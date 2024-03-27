@@ -53,11 +53,15 @@ tableTeams.value.sort((a, b) => (a.point < b.point ? 1 : -1))
 </script>
 
 <template>
-    <div>BABAR</div>
-    <div v-for="(team) in tableTeams" :key="team.id">
-        <RankingsTeams :team="team"/>
-    </div>  
-
-
-
-</template>@/api/apiRankings
+    <div class="flex flex-col items-center justify-center min-h-screen bg-gradient-to-r from-green-400 to-blue-500">
+        <div v-for="(team) in tableTeams" :key="team.id" class="w-full max-w-md mx-auto my-5 overflow-hidden bg-white rounded-lg shadow-lg">
+            <div class="px-6 py-4">
+                <h1 class="mb-3 text-4xl font-bold text-gray-700 uppercase">Équipe {{ team.name }}</h1>
+                <p class="text-xl text-gray-600">Position : {{ team.position }}</p>
+            </div>
+            <div class="px-6 py-4 bg-gray-100 border-t-4 border-indigo-500">
+                <RankingsTeams :team="team" />
+            </div>
+        </div>
+    </div>
+</template>
