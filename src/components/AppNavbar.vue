@@ -2,9 +2,17 @@
 import { ref } from 'vue';
 import { useUserStore } from '@/stores/user';
 import { storeToRefs } from 'pinia';
+import { supabase } from '@/supabase';
+import { useRouter } from 'vue-router';
 
+const router = useRouter();
 const drawer = ref(false);
 const { user } = storeToRefs(useUserStore());
+
+const logout = async () => {
+    await supabase.auth.signOut();
+    router.push('/login');
+}
 </script>
 
 <template>
@@ -41,7 +49,7 @@ const { user } = storeToRefs(useUserStore());
                 </li>
                 
                 <li class="block w-full p-4 hover:bg-gray-800" v-if="user">
-                    <router-link to="/logout">Logout</router-link>
+                    <router-link to="/logout" @click="logout">Logout</router-link>
                 </li>
             </ul>
         </div>
