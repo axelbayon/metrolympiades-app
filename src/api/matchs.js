@@ -3,7 +3,7 @@ import { ref } from "vue"
 
 export const matchs = ref([])
 
-export const insertMatch = async (team1,team2,sport,time,team1_score,team2_score,author_id) => {
+export const insertMatch = async (team1,team2,sport,time,team1_score,team2_score) => {
     const {error} = await supabase.from('matchs').insert({
         team1,team2,sport,time,team1_score,team2_score
     })

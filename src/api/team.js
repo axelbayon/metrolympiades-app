@@ -5,8 +5,8 @@ export const members = ref([])
 
 export const teamName = ref ("")
 
-export const fetchTeamName = async () => {
-    const {error, data} = await supabase.from('teams').select('name').eq('leader', 'af15a5b4-3d82-4967-bb2c-e01fffc69aab').single()
+export const fetchTeamName = async (userId) => {
+    const {error, data} = await supabase.from('teams').select('name').eq('leader', userId).single()
 
     if (error){
         console.error('Error fetching team name', error)
@@ -15,8 +15,8 @@ export const fetchTeamName = async () => {
     }
 }
 
-export const fetchMembers = async () => {
-    const {error, data} = await supabase.from('teams').select('members').eq('leader', 'af15a5b4-3d82-4967-bb2c-e01fffc69aab').single()
+export const fetchMembers = async (userId) => {
+    const {error, data} = await supabase.from('teams').select('members').eq('leader', userId).single()
 
     if (error){
         console.error('Error fetching members', error)
@@ -25,15 +25,15 @@ export const fetchMembers = async () => {
     }
 }
 
-export const updateMembers = async (newMembers) => {
-    const {error} = await supabase.from('teams').update({members: newMembers}).eq('leader', 'af15a5b4-3d82-4967-bb2c-e01fffc69aab')
+export const updateMembers = async (newMembers,userId) => {
+    const {error} = await supabase.from('teams').update({members: newMembers}).eq('leader', userId)
     if (error){
         console.error('Error updating members', error)
     }
 }
 
-export const updateTeamName = async (newName) => {
-    const {error} = await supabase.from('teams').update({name: newName}).eq('leader', 'af15a5b4-3d82-4967-bb2c-e01fffc69aab')
+export const updateTeamName = async (newName,userId) => {
+    const {error} = await supabase.from('teams').update({name: newName}).eq('leader', userId)
     if (error){
         console.error('Error updating team name', error)
     }
