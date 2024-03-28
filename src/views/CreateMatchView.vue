@@ -2,14 +2,16 @@
 import FormSelect from '@/components/FormSelect.vue';
 import FormInput from '@/components/FormInput.vue'
 import { onMounted, ref } from "vue"
-import { getTeam, getMyTeam} from '@/api/apiRankings'
+import { getTeam, getMyTeam, myId} from '@/api/apiRankings'
+import { insertMatch } from '@/api/matchs'
 import { useUserStore } from '@/stores/user'
 import {storeToRefs} from 'pinia'
 const {user} = storeToRefs(useUserStore())
+import { useRouter } from 'vue-router';
 
+const router = useRouter()
 
 const sports = ['Football', 'Tennis', 'Swimming', 'Basketball', 'Baseball', 'Soccer', 'Golf', 'Cricket', 'Rugby', 'Hockey', 'Volleyball', 'Table Tennis', 'Badminton', 'Track and Field', 'Cycling', 'Boxing', 'Martial Arts', 'Wrestling', 'Rowing', 'Sailing', 'Surfing', 'Skateboarding', 'Snowboarding', 'Skiing', 'Figure Skating', 'Gymnastics', 'Diving', 'Weightlifting', 'Archery', 'Fencing', 'Handball', 'Polo', 'Water Polo', 'Equestrianism', 'Triathlon', 'Mixed Martial Arts', 'Taekwondo', 'Karate', 'Judo', 'Bobsleigh', 'Luge', 'Skeleton', 'Biathlon', 'Canoeing', 'Kayaking', 'Modern Pentathlon', 'Shooting', 'Pentathlon', 'Tae Bo', 'Sumo Wrestling'];
-
 const selectedSport = ref ('')
 const selectedTeam = ref ('')
 const team1 = ref('')
@@ -18,13 +20,16 @@ const names = ref([])
 const date = ref()
 const score1 = ref()
 const score2 = ref()
+
 const create = () => {
-  
+  insertMatch(myId.value,teams.value.find(item => item.name === selectedTeam.value).id,selectedSport.value,date.value,score1.value,score2.value)
+  router.push({name: 'Matchs'})
 }
+
 onMounted(async () => {
   teams.value = await getTeam()
   names.value = teams.value.map(team => team.name);
-  team1.value = getMyTeam(user)
+  team1.value = await getMyTeam(user.value.id)
 })
 </script>
 
@@ -37,7 +42,7 @@ onMounted(async () => {
       <FormInput v-model="team1" id="team1" disabled="disabled" class="m-2" />
       <FormSelect label="Sport" :options="sports" v-model="selectedSport" />
       <FormSelect label="Opposite Team" :options="names" v-model="selectedTeam" />
-      <FormInput v-model="date" id="date" type="date" class="m-2"/>
+      <FormInput v-model="date" id="date" type="time" class="m-2"/>
       <div class="flex flex-row gap-4">
         <FormInput v-model="score1" id="score1" class="m-2" placeholder="Score team 1" type="number" min="0"/>
         <FormInput v-model="score2" id="score2" class="m-2" placeholder="Score team 2" type="number" min="0"/>
