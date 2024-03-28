@@ -16,8 +16,8 @@ const createMatch = () => {
 </script>
 
 <template>
-    <div class="p-4">
-        <div v-for="(match, index) in matchs" :key="index" >
+    <div class="flex flex-col items-center justify-center min-h-screen">
+        <div v-for="(match, index) in matchs" :key="index" class="w-full max-w-md mx-auto my-5 overflow-hidden bg-white rounded-lg shadow-lg">
             <AppMatch :match="match"/>
         </div>
         <button

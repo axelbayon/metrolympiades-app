@@ -10,23 +10,11 @@
 </script>
 
 <template>
-    <div class="match">
-      <div>{{ match.team1.name }}</div>
-      <div>{{ match.team2.name }}</div>
-      <div>{{ match.sport }}</div>
-      <div>{{ match.time }}</div>
-      <div>Score : {{ match.team1_score }} - {{ match.team2_score }}</div>
-    </div>
+  <div class="px-6 py-4">
+      <h1 class="mb-3 text-4xl font-bold text-gray-700 uppercase">{{ match.team1.name }} / {{ match.team2.name }}</h1>
+      <p class="text-xl text-gray-600">Sport : {{ match.sport }}</p>
+      <p class="text-xl text-gray-600">Heure : {{ match.time }}</p>
+      <p class="text-xl text-gray-600">Score : {{ match.team1_score }} - {{ match.team2_score }}</p>
+  </div>
 </template>
-  
-  
-  
-<style scoped>
-.match {
-    color: #ffffff;
-    border: 1px solid #ccc;
-    padding: 10px;
-    margin-bottom: 10px;
-}
-</style>
   

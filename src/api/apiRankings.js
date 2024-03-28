@@ -20,7 +20,6 @@ export const getTeam = async() => {
 }
 
 export const  getResult= async() => {
-
     const {data, error} = await supabase.from('matchs').select('team1, team2,team1_score,team2_score')
 
     if(error){
