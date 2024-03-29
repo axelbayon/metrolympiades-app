@@ -48,8 +48,8 @@ const logout = async () => {
                     <router-link to="/signup">Sign Up</router-link>
                 </li>
                 
-                <li class="block w-full p-4 hover:bg-gray-800" v-if="user">
-                    <router-link to="/logout" @click="logout">Logout</router-link>
+                <li class="block w-full p-4 cursor-pointer hover:bg-gray-800" v-if="user">
+                    <p @click="logout">Logout</p>
                 </li>
             </ul>
         </div>

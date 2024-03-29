@@ -1,10 +1,13 @@
 <script setup>
 import {onMounted} from 'vue';
 import {fetchTeamName, fetchMembers, updateTeamName, updateMembers, members, teamName} from '@/api/team';
+import { useUserStore } from '@/stores/user'
+import {storeToRefs} from 'pinia'
+const {user} = storeToRefs(useUserStore())
 
 onMounted(async () => {
-    await fetchTeamName()
-    await fetchMembers()
+    await fetchTeamName(user.value.id)
+    await fetchMembers(user.value.id)
 
     if (!members.value.length) {
         addMembers(members.value)
@@ -14,20 +17,20 @@ onMounted(async () => {
 function addMembers(members){
 
     members.push("")
-    updateMembers(members)
+    updateMembers(members,user.value.id)
 }
 
 function ModifyMembers(members){
-    updateMembers(members)
+    updateMembers(members,user.value.id)
 }
 
 function ModifyTeamName(teamName){
-    updateTeamName(teamName)
+    updateTeamName(teamName,user.value.id)
 }
 
 function deleteMembers(members, index){
     members.splice(index, 1)
-    updateMembers(members)
+    updateMembers(members,user.value.id)
 }
 </script>
 
