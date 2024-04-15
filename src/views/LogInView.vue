@@ -1,5 +1,7 @@
 <script setup>
 import FormInput from '@/components/FormInput.vue'
+import AppButton from '@/components/AppButton.vue'
+import AppLabel from '@/components/AppLabel.vue'
 import { useRouter } from 'vue-router';
 import { supabase } from '@/supabase'
 import { ref } from 'vue'
@@ -9,58 +11,49 @@ const router = useRouter()
 const email = ref('')
 const password = ref('')
 
-
 function createAccount() {
-    router.push({name: 'SignUp'})
+    router.push({ name: 'SignUp' })
 }
 
 async function login() {
-    const {error} = await supabase.auth.signInWithPassword({
+    const { error } = await supabase.auth.signInWithPassword({
         email: email.value,
         password: password.value
     })
     if (error) {
-        alert(error)  
+        alert(error.message)
     } else {
-        router.push({name: 'TeamSettings'});
+        console.log("Login successful");
+        router.push({ name: 'TeamSettings' });
     }
 }
-
 </script>
 
 <template>
   <div
-    class="flex flex-col items-center justify-center h-screen mx-auto my-auto text-white max-w-96"
+    class="flex flex-col items-center justify-center mx-auto "
   >
-    <h1 class="mb-10 text-4xl">METROLYMPIADES</h1>
-    <h1 class="text-3xl mb-14">LOGIN</h1>
+    <h1 class="mb-8 text-5xl font-bold">METROLYMPIADE</h1>
+    <h1 class="mb-8 text-4xl font-bold">Log in page</h1>
 
     <form @submit.prevent="login" class="justify-center w-full">
       <div class="mx-auto mb-3">
-        <label for="email" class="flex justify-center mb-1">Email:</label>
-        <FormInput v-model="email" id="email" type="email" autocomplete="email" placeholder="dupond@gmail.com" required></FormInput>
+        <AppLabel for="email" text="Email"/>
+        <FormInput text="Email :" v-model="email" id="email" type="email" autocomplete="email" placeholder="your.email@gmail.com" required></FormInput>
       </div>
 
       <div class="mx-auto mb-6">
-        <label for="password" class="flex justify-center mb-1">Password:</label>
+        <AppLabel for="password" text="Password"/>
         <FormInput v-model="password" id="password" type="password" autocomplete="password" placeholder="**********" required></FormInput>
       </div>
 
-      <button
-        type="submit"
-        class="flex justify-center w-32 p-3 mx-auto mb-5 text-xl border-2 border-white rounded-md bg-slate-500 hover:bg-slate-300 hover:border-black hover:text-black"
-      >
-        Log In
-      </button>
+      <AppButton text="Log In" type="submit" />
     </form>
 
-    <p class="mb-40" @click="createAccount">Don't have an account ? Create an account</p>
+    <p class="my-8 text-xl" @click="createAccount">Don't have an account ? 
+      <span class="underline cursor-pointer">Click here to create an account !</span>
+    </p>
 
-    <button
-      class="flex justify-center w-64 p-3 mx-auto mb-2 text-2xl border-2 border-white rounded-md bg-slate-500 hover:bg-slate-300 hover:border-black hover:text-black"
-      @click="router.push({name: 'Rankings'})"
-      >
-      Guest Access
-    </button>
+    <AppButton text="Guest Access"/>
   </div>
 </template>

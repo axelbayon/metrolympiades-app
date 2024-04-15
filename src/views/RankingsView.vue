@@ -4,17 +4,9 @@ import {getTeam,getResult} from '@/api/apiRankings'
 import {onMounted, ref} from 'vue'
 import RankingsTeams from '@/components/RankingsTeams.vue'
 
-
-
-const teams=ref([
-    
-])
-const tableTeams=ref([
-    
-])
+const teams=ref([])
+const tableTeams=ref([])
 const matchs=ref([])
-
-
 
 onMounted(async() => {
     teams.value=await getTeam()
@@ -46,16 +38,15 @@ onMounted(async() => {
 }
 
 tableTeams.value.sort((a, b) => (a.point < b.point ? 1 : -1))
-
 }) 
-
 
 </script>
 
 <template>
     <div class="flex flex-col items-center justify-center min-h-screen">
-        <div v-for="(team, index) in tableTeams" :key="index" class="w-full max-w-md mx-auto my-5 overflow-hidden bg-white rounded-lg shadow-lg">
-                <RankingsTeams :team="team" :index="index"/>
+    <h1 class="mb-8 text-4xl font-bold">Team Ranking</h1>
+        <div v-for="(team, index) in tableTeams" :key="index" class="w-4/5 my-5 overflow-hidden border-2 rounded-lg shadow-lg x-auto">
+            <RankingsTeams :team="team" :index="index"/>
         </div>
     </div>
 </template>

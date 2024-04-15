@@ -1,5 +1,7 @@
 <script setup>
 import FormInput from '@/components/FormInput.vue'
+import AppButton from '@/components/AppButton.vue'
+import AppLabel from '@/components/AppLabel.vue'
 import { useRouter } from 'vue-router'
 import { supabase } from '@/supabase'
 import { ref } from 'vue'
@@ -31,26 +33,25 @@ async function signup() {
 </script>
 
 <template>
-  <div
-    class="flex flex-col items-center justify-center h-screen mx-auto my-auto text-white max-w-96"
-  >
-    <h1 class="mb-12 text-4xl">Create an account</h1>
+  <div class="flex flex-col items-center justify-center mx-auto max-w-96">
+  <h1 class="mb-8 text-5xl font-bold">METROLYMPIADE</h1>
+  <h1 class="mb-8 text-4xl font-bold">Sign up page</h1>
 
     <form @submit.prevent="signup" class="justify-center w-full">
       <div class="mx-auto mb-4">
-        <label for="email" class="flex justify-center mb-1">Email:</label>
+        <AppLabel for="email" text="Email"/>
         <FormInput
           v-model="email"
           id="email"
           type="email"
           autocomplete="email"
-          placeholder="dupond@gmail.com"
+          placeholder="your.email@gmail.com"
           required
         ></FormInput>
       </div>
 
       <div class="mx-auto mb-4">
-        <label for="password" class="flex justify-center mb-1">Password:</label>
+        <AppLabel for="password" text="Password"/>
         <FormInput
           v-model="password"
           id="password"
@@ -62,7 +63,7 @@ async function signup() {
       </div>
 
       <div class="mx-auto mb-10">
-        <label for="password" class="flex justify-center mb-1">Password Confirmation:</label>
+        <AppLabel for="password" text="Confirm Password"/>
         <FormInput
           v-model="newPassword"
           id="new-password"
@@ -73,12 +74,8 @@ async function signup() {
         ></FormInput>
       </div>
 
-      <button
-        type="submit"
-        class="flex justify-center w-32 p-3 mx-auto mb-5 text-xl border-2 border-white rounded-md bg-slate-500 hover:bg-slate-300 hover:border-black hover:text-black"
-      >
-        Sign Up
-      </button>
+      <AppButton text="Sign Up" type="submit" />
+
     </form>
   </div>
 </template>

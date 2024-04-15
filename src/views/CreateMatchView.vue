@@ -1,6 +1,8 @@
 <script setup>
 import FormSelect from '@/components/FormSelect.vue';
 import FormInput from '@/components/FormInput.vue'
+import AppButton from '@/components/AppButton.vue'
+import AppLabel from '@/components/AppLabel.vue';
 import { onMounted, ref } from "vue"
 import { getTeam, getMyTeam, myId} from '@/api/apiRankings'
 import { insertMatch } from '@/api/matchs'
@@ -34,25 +36,31 @@ onMounted(async () => {
 </script>
 
 <template>
-  <div
-    class="flex flex-col items-center justify-center h-screen mx-auto my-auto text-white max-w-96"
-  >
-    <h1 class="mb-8 text-3xl">Match</h1>
+  <div class="flex flex-col items-center justify-center mx-auto">
+    <h1 class="mb-8 text-4xl font-bold">Creation of a match</h1>
     <form @submit.prevent="create" class="justify-center w-full">
-      <FormInput v-model="team1" id="team1" disabled="disabled" class="m-2" />
-      <FormSelect label="Sport" :options="sports" v-model="selectedSport" />
-      <FormSelect label="Opposite Team" :options="names" v-model="selectedTeam" />
-      <FormInput v-model="date" id="date" type="time" class="m-2"/>
-      <div class="flex flex-row gap-4">
-        <FormInput v-model="score1" id="score1" class="m-2" placeholder="Score team 1" type="number" min="0"/>
-        <FormInput v-model="score2" id="score2" class="m-2" placeholder="Score team 2" type="number" min="0"/>
+      <AppLabel text="Your Team" />
+      <FormInput v-model="team1" id="team1" disabled="disabled"/>
+
+      <AppLabel text="Select the sport" />
+      <FormSelect label="Sport" :options="sports" v-model="selectedSport" required/>
+      
+      <AppLabel text="Select the opposite team" />
+      <FormSelect label="Opposite Team" :options="names" v-model="selectedTeam" required />
+      
+      <AppLabel text="Select the hour of the match" />
+      <FormInput v-model="date" id="date" type="time" required/>
+      <div class="flex flex-row justify-center gap-4 mx-auto text-center">
+        <div>
+          <AppLabel text="The score of your team" />
+          <FormInput v-model="score1" id="score1" placeholder="Score team 1" type="number" min="0" required/>
+        </div>
+      <div>
+        <AppLabel text="The score of the other team" />
+        <FormInput v-model="score2" id="score2" placeholder="Score team 2" type="number" min="0" required/>
       </div>
-      <button
-        type="submit"
-        class="flex justify-center p-3 mx-auto mt-5 mb-5 text-xl border-2 border-white rounded-md w-50 bg-slate-500 hover:bg-slate-300 hover:border-black hover:text-black"
-      >
-        Create the Match
-      </button>
+      </div>
+      <AppButton class="mt-10" text="Create the match" type="submit"/>
     </form>
   </div>
 </template>
