@@ -43,10 +43,11 @@ tableTeams.value.sort((a, b) => (a.point < b.point ? 1 : -1))
 </script>
 
 <template>
-    <div class="flex flex-col items-center justify-center min-h-screen">
-    <h1 class="mb-8 text-4xl font-bold">Team Ranking</h1>
-        <div v-for="(team, index) in tableTeams" :key="index" class="w-4/5 my-5 overflow-hidden border-2 rounded-lg shadow-lg x-auto">
+    <div class="flex flex-col items-center justify-center min-h-screen px-8 py-12">
+        <h1 class="mb-8 text-4xl font-bold">Team Ranking</h1>
+        <div v-for="(team, index) in tableTeams" :key="index" class="w-full mb-6 overflow-hidden border-2 rounded-lg shadow-lg md:w-3/4 lg:w-2/3">
             <RankingsTeams :team="team" :index="index"/>
         </div>
     </div>
 </template>
+

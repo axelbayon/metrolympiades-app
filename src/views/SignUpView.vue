@@ -33,49 +33,27 @@ async function signup() {
 </script>
 
 <template>
-  <div class="flex flex-col items-center justify-center mx-auto max-w-96">
-  <h1 class="mb-8 text-5xl font-bold">METROLYMPIADE</h1>
-  <h1 class="mb-8 text-4xl font-bold">Sign up page</h1>
+  <div class="flex flex-col items-center justify-center max-w-4xl px-8 py-12 mx-auto">
+    <h1 class="mb-8 text-4xl font-bold">METROLYMPIADE</h1>
+    <h1 class="mb-8 text-3xl font-bold">Sign up page</h1>
 
-    <form @submit.prevent="signup" class="justify-center w-full">
-      <div class="mx-auto mb-4">
+    <form @submit.prevent="signup" class="w-full max-w-lg">
+      <div class="mb-6">
         <AppLabel for="email" text="Email"/>
-        <FormInput
-          v-model="email"
-          id="email"
-          type="email"
-          autocomplete="email"
-          placeholder="your.email@gmail.com"
-          required
-        ></FormInput>
+        <FormInput v-model="email" id="email" type="email" autocomplete="email" placeholder="your.email@gmail.com" required></FormInput>
       </div>
 
-      <div class="mx-auto mb-4">
+      <div class="mb-6">
         <AppLabel for="password" text="Password"/>
-        <FormInput
-          v-model="password"
-          id="password"
-          type="password"
-          autocomplete="password"
-          placeholder="**********"
-          required
-        ></FormInput>
+        <FormInput v-model="password" id="password" type="password" autocomplete="password" placeholder="**********" required></FormInput>
       </div>
 
-      <div class="mx-auto mb-10">
-        <AppLabel for="password" text="Confirm Password"/>
-        <FormInput
-          v-model="newPassword"
-          id="new-password"
-          type="password"
-          autocomplete="new-password"
-          placeholder="**********"
-          required
-        ></FormInput>
+      <div class="mb-8">
+        <AppLabel for="new-password" text="Confirm Password"/>
+        <FormInput v-model="newPassword" id="new-password" type="password" autocomplete="new-password" placeholder="**********" required></FormInput>
       </div>
 
-      <AppButton text="Sign Up" type="submit" />
-
+      <AppButton class="mb-6" text="Sign Up" type="submit" />
     </form>
   </div>
 </template>

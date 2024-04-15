@@ -24,7 +24,6 @@ const toggleDarkMode = () => {
 </script>
 
 <template>
-    {{ console.log(user) }}
     <div class="relative flex flex-col">
         <div :class="{ 'bg-gray-900': isDarkMode, 'bg-gray-300': !isDarkMode }" class="flex items-center justify-between p-4">
             <div>

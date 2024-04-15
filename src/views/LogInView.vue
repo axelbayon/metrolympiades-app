@@ -21,39 +21,40 @@ async function login() {
         password: password.value
     })
     if (error) {
-        alert(error.message)
+        alert("The email address or password is incorrect. Please try again.")
+        console.log("Connexion échouée, impossible de trouver cet utilisateur.");
     } else {
-        console.log("Login successful");
+        console.log("Utilisateur connecté.");
         router.push({ name: 'TeamSettings' });
     }
 }
 </script>
 
 <template>
-  <div
-    class="flex flex-col items-center justify-center mx-auto "
-  >
-    <h1 class="mb-8 text-5xl font-bold">METROLYMPIADE</h1>
-    <h1 class="mb-8 text-4xl font-bold">Log in page</h1>
+  <div class="flex flex-col items-center justify-center max-w-4xl px-8 py-12 mx-auto">
+    <h1 class="mb-8 text-4xl font-bold">METROLYMPIADE</h1>
+    <h1 class="mb-8 text-3xl font-bold">Log in page</h1>
 
-    <form @submit.prevent="login" class="justify-center w-full">
-      <div class="mx-auto mb-3">
+    <form @submit.prevent="login" class="w-full max-w-md">
+      <div class="mb-4">
         <AppLabel for="email" text="Email"/>
-        <FormInput text="Email :" v-model="email" id="email" type="email" autocomplete="email" placeholder="your.email@gmail.com" required></FormInput>
+        <FormInput v-model="email" id="email" type="email" autocomplete="email" placeholder="your.email@gmail.com" required></FormInput>
       </div>
 
-      <div class="mx-auto mb-6">
+      <div class="mb-6">
         <AppLabel for="password" text="Password"/>
         <FormInput v-model="password" id="password" type="password" autocomplete="password" placeholder="**********" required></FormInput>
       </div>
 
-      <AppButton text="Log In" type="submit" />
+      <AppButton class="mb-6" text="Log In" type="submit" />
     </form>
 
-    <p class="my-8 text-xl" @click="createAccount">Don't have an account ? 
+    <p class="mb-6 text-lg text-center" @click="createAccount">Don't have an account ? 
       <span class="underline cursor-pointer">Click here to create an account !</span>
     </p>
 
-    <AppButton text="Guest Access"/>
+    <AppButton class="mb-6" text="Guest Access" @click="router.push({name: 'Rankings'})"/>
   </div>
 </template>
+
+
