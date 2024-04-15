@@ -39,7 +39,16 @@ const toggleDarkMode = () => {
                 </label>
             </div>
 
-            <button @click="dropdown = !dropdown" class="text-lg">
+            <div class="hidden md:flex md:items-center md:space-x-4">
+                <router-link to="/rankings" class="px-4 py-2 text-lg hover:bg-gray-400">Rankings</router-link>
+                <router-link v-if="user" to="/matchs" class="px-4 py-2 text-lg hover:bg-gray-400">Matchs</router-link>
+                <router-link v-if="user" to="/" class="px-4 py-2 text-lg hover:bg-gray-400">Team Settings</router-link>
+                <router-link v-if="!user" to="/login" class="px-4 py-2 text-lg hover:bg-gray-400">Login</router-link>
+                <router-link v-if="!user" to="/signup" class="px-4 py-2 text-lg hover:bg-gray-400">Sign Up</router-link>
+                <button v-if="user" @click="logout" class="px-4 py-2 text-lg hover:bg-gray-400">Logout</button>
+            </div>
+
+            <button @click="dropdown = !dropdown" class="text-lg md:hidden">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-6 h-6">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
                 </svg>
