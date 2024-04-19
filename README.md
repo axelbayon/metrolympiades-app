@@ -23,9 +23,9 @@ The random user can:
 - Create an account to register your own team of up to 5 members,
 - Log in to your team leader account.
 
-The teams leader can:
+Teams leader can:
 
-- Modify the name of your team as well as the number and name of members,,
+- Modify the name of your team as well as the number and name of members,
 - Consult the "Team Ranking" page,
 - Consult the "Match History" page,
 - Create a match pitting your team against another team already registered.
