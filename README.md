@@ -12,7 +12,7 @@ It's a website where you can see the ranking between the differents teams of the
   - Clone the project using the `git clone` command and the link of the project ([https://github.com/axelbayon/metrolympiades-app.git]).
   - Send a request by email to axel.bayon@etu.unicaen.fr to have access to the environment variables of the database used for this site in an .env file.
   - Still in the "git bash" terminal, install Vite with the `nmp install vite` command.
-  - To start the project, enter, still in the same terminal, the command `npm run dev`. Copy the link into your browser to run the site! (If 
+  - To start the project, enter, still in the same terminal, the command `npm run dev`. Copy the link into your browser to run the site!
 
 
 ## Main features
